@@ -40,7 +40,7 @@ namespace subFinder
 
             // get args
             string movieName = args[0]; // The_Blacklist_S01E01_720p_BluRay_PaHe
-            string subPath = args[1];   // C:\Users\Arvin\Desktop\Sub
+            string subPath = args[1];   // C:\Users\YourName\Desktop\mySubFolder
 
 
             // -------step 1-------
@@ -133,6 +133,12 @@ namespace subFinder
         private static void LogImport(string status, string comment, string subPath)
         {
             string logPath = Environment.CurrentDirectory + "\\Database\\subFinder.log";
+
+            if (!File.Exists(logPath))
+            {
+                File.Create(logPath);
+            }
+
             string currentDate = DateTime.Now.ToString("yyyy/M/d");
             string currentTime = DateTime.Now.ToString("HH:mm:ss");
 
