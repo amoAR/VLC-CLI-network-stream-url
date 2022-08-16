@@ -1,9 +1,0 @@
-These are options of VLC --> auto detect - locate :
-Path: executionLocation\Database\vlcLocation.txt
-
-
-
-*By default we will look for your VLC in the default path (C:\Program Files\VideoLAN\VLC)
-
-if VLC is not there, program will ask you to manually specify the installation folder location of VLC
-*Be careful to enter the folder path, not the program itself
