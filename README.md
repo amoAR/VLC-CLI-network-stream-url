@@ -141,11 +141,16 @@ Distributed under the MIT License. See [LICENSE.md](LICENSE.md) for more informa
 
 ## Screenshots
 
-* _main screenshot :_
-![main](.github/images/main.png)
-
-* _result screenshot :_
-![result](.github/images/result.png)
+> In the pictures below, program is run in the `Windows terminal` environment.
+>
+> <h4>main screenshot : :arrow_down_small:</h4>
+>
+> ![main](.github/images/main.png)
+>
+> <h4>result screenshot : :arrow_down_small:</h4>
+>
+> ![result](.github/images/result.png)
+<br />
 
 <!-- CONTACT -->
 
