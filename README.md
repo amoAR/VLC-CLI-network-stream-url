@@ -11,8 +11,7 @@ This script has been produced for ease and a little beauty in streaming HTTP, HT
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <img src=".github/images/icon.ico" alt="icon" width="80" height="80">
-  <p align="left"> * Initial screen of this program in Windows Terminal</p>
+  <img src=".github/images/icon.ico" alt="icon" width="120" height="120">
 
   <h3 align="center">VLC CLI for network HTTP urls</h3>
 
@@ -43,7 +42,7 @@ This script has been produced for ease and a little beauty in streaming HTTP, HT
     <li><a href="#usage">Usage</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#screen-shots">Screenshots</a></li>
+    <li><a href="#screenshots">Screenshots</a></li>
   </ol>
 </details>
 
@@ -140,15 +139,12 @@ Distributed under the MIT License. See [LICENSE.md](LICENSE.md) for more informa
 
 <!-- Screenshots -->
 
-## screen-shots
+## Screenshots
 
-* subFinder feature :
-![subFinder feature](.github/images/subtitle-finder-feature.png)
-
-* main :
+* _main screenshot :_
 ![main](.github/images/main.png)
 
-* result :
+* _result screenshot :_
 ![result](.github/images/result.png)
 
 <!-- CONTACT -->
