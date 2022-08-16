@@ -1,0 +1,28 @@
+These are options of URL -->
+   protocol - root domain - title - chapter - episode - quality - format :
+
+
+
+*What is a valid URL?
+
+must have protocol -----------> HTTP, HTTPS
+must have chapter & episode --> S01E01
+must have format -------------> .mkv
+
+Example:
+
+    https://netflix.com/S01E01.mkv                : https
+
+    http://netflix.com/S01E01.mkv                 : http
+
+    https://Pahe.in/S01E01.mkv                    : domain
+
+    https://netflix.com/the_name_S01E01.mkv       : title
+
+    https://netflix.com/S01E01_720p_BluRay.mkv    : quality
+
+    https://netflix.com/S01E01.mp4                : format
+
+*All 3-character video formats are acceptable
+*There should be no separator between chapter and episode
+*All separator characters are allowed ('-', '_', '.' ,...) except spaces (' ', '%20')
