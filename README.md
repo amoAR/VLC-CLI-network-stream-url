@@ -11,7 +11,7 @@ This script has been produced for ease and a little beauty in streaming HTTP, HT
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <img src=".github/images/icon.ico" alt="icon">
+  <img src=".github/images/icon.ico" alt="icon" width="80" height="80">
   <p align="left"> * Initial screen of this program in Windows Terminal</p>
 
   <h3 align="center">VLC CLI for network HTTP urls</h3>
