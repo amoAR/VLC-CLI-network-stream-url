@@ -141,7 +141,7 @@ Distributed under the MIT License. See [LICENSE.md](LICENSE.md) for more informa
 
 ## Screenshots
 
-> In the pictures below, program is run in the `Windows terminal` environment.
+> In the pictures below, program is run in the [Windows Terminal](https://apps.microsoft.com/store/detailwindows-terminal9N0DX20HK701?hl=en-us&gl=US) environment.
 >
 > <h4>main screenshot : :arrow_down_small:</h4>
 >
