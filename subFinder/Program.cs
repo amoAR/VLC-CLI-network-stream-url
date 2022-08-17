@@ -134,9 +134,10 @@ namespace subFinder
         {
             string logPath = Environment.CurrentDirectory + "\\Database\\subFinder.log";
 
+            // create logfile
             if (!File.Exists(logPath))
             {
-                File.Create(logPath);
+                File.Create(logPath).Close();
             }
 
             string currentDate = DateTime.Now.ToString("yyyy/M/d");
@@ -154,12 +155,12 @@ namespace subFinder
 
             // set limit for line of file
             int lineCount = File.ReadAllLines(logPath).Length;
-            if  (lineCount > 9)
+            if  (lineCount >= 10)
             {
                 File.Create(logPath).Close();
             }
 
-            File.AppendAllText(logPath, log + Environment.NewLine, System.Text.Encoding.UTF8);
+            File.AppendAllText(logPath, log + Environment.NewLine, System.Text.Encoding.ASCII);
         }
     }
 }
