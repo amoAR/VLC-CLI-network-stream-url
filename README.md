@@ -60,7 +60,7 @@ You don't need a lot!
 - Windows OS
 
 - VLC (Preferably the latest version)<br />
-  You can get the latest version from their official website [https://www.videolan.org/vlc](https://www.videolan.org/vlc)
+  You can get the latest version from their [official website](https://www.videolan.org/vlc)
   <br />
 
 ### Installation
