@@ -44,10 +44,10 @@ namespace subFinder
 
 
             // -------step 1-------
-            // find chapter e.g S0E01
+            // find chapter e.g S01E01
             string chapter = String.Empty;
             int x = 0; // last index for last loop
-            int lastIndex = movieName.LastIndexOf('S') + 1; // last index
+            int lastIndex = movieName.LastIndexOf('S') + 1; // last index (for end loop)
             while (x < lastIndex)
             {
                 x = movieName.IndexOf('S', x + 6);
@@ -61,6 +61,7 @@ namespace subFinder
                         && char.IsDigit(movieName[x + 5]))
                     {
                         chapter = movieName.Substring(x, 6);
+                        break;
                     }
                 }
                 else
@@ -68,7 +69,6 @@ namespace subFinder
                     break;
                 }
             }
-
 
             // failed to find chapter
             if (chapter == string.Empty)
@@ -134,13 +134,12 @@ namespace subFinder
         {
             string logPath = Environment.CurrentDirectory + "\\Database\\subFinder.log";
 
-            // create logfile
             if (!File.Exists(logPath))
             {
                 File.Create(logPath).Close();
             }
 
-            string currentDate = DateTime.Now.ToString("yyyy/M/d");
+            string currentDate = DateTime.Now.ToString("yyyy/MM/dd");
             string currentTime = DateTime.Now.ToString("HH:mm:ss");
 
             string log = currentDate + " " + currentTime + " [" + status.ToUpper() + "]";
