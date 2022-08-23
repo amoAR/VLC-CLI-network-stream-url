@@ -22,11 +22,10 @@
 <vlc:option>sout-x264-bluray-compat</vlc:option>
 <vlc:option>antiflicker-softening-size=31</vlc:option>
 <vlc:option>src-converter-type=0</vlc:option>
-<vlc:option>network-caching=333</vlc:option>
+<vlc:option>network-caching=1000</vlc:option>
 <vlc:option>mtu=1492</vlc:option>
 <vlc:option>aout=directsound</vlc:option>
-<vlc:option>directx-volume=0.8</vlc:option>
-<vlc:option>qt-max-volume=200</vlc:option>
+<vlc:option>directx-volume=1</vlc:option>
 <vlc:option>no-audio-time-stretch</vlc:option>
 <vlc:option>force-dolby-surround=1</vlc:option>
 <vlc:option>stereo-mode=5</vlc:option>

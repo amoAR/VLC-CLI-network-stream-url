@@ -22,10 +22,10 @@
 --sout-x264-bluray-compat
 --antiflicker-softening-size=31
 --src-converter-type=0
---network-caching=333
+--network-caching=1000
 --mtu=1492
 --aout=directsound
---directx-volume=0.8
+--directx-volume=1
 --qt-max-volume=200
 --no-audio-time-stretch
 --force-dolby-surround=1
