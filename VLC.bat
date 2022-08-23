@@ -47,7 +47,7 @@ if not "%number%"=="40" (
 
 set "counter=findstr /r /n "^^" %Commands%Pcommands.txt | find /c ":""
 for /f %%a in ('!counter!') do set number=%%a
-if not "%number%"=="39" (
+if not "%number%"=="38" (
     echo \033[%fYellow% Oh^^! it looks like we detected a problem in directory - ERROR 1.2 \033[0m | %style% 
     echo: 
     echo | set /p="Please wait while we fix the issue... "
@@ -149,6 +149,22 @@ if not exist "%Help%error.txt" (
 )
 
 
+:: check VLC open
+tasklist /fi "ImageName eq vlc.exe" /fo csv 2>NUL | find /I "vlc.exe">nul
+if "%ERRORLEVEL%"=="0" (
+    echo \033[%fYellow% Oh^^! VLC is open. Would you like to close it to continue? \033[0m | %style%
+    echo:
+    pause | set /p="Press any key to continue... "
+    cls
+    echo:
+    echo:
+    echo | set /p="Press any key to continue... |"
+    echo \033[%fCyan% The process was terminated successfully \033[0m | %style%
+    taskkill /f /t /im vlc.exe>nul
+    echo:
+)
+
+
 
 ::welcome
 echo:
@@ -178,7 +194,7 @@ if exist "%vlcPath%\vlc.exe" (
     echo \033[%fRed% Unfortunately, we could not find VLC location. please enter it manually \033[0m | %style%
     :getVlcLocationManuallyRetry
     echo \033[%fYellow% %tab%------------------------------------------ \033[0m | %style%
-    set /p "vlcPath=>%tab%Location (e.g. C:\Program Files\VideoLAN): "
+    set /p "vlcPath=>%tab%Location (e.g. C:\Program Files\VideoLAN\VLC): "
     echo \033[%fYellow% %tab%------------------------------------------ \033[0m | %style%
     goto checkVlcLocation
 )
@@ -280,9 +296,14 @@ if "%stream%"=="play playlist" goto playlist
 if "%stream%"=="2" goto resetPlaylist
 if "%stream%"=="reset playlist" goto resetPlaylist
 
+if "%stream%"=="3" goto resetVlc
+if "%stream%"=="reset vlc" goto resetVlc
+
 if "%stream%"=="-h" goto help
 if "%stream%"=="-help" goto help
 if "%stream%"=="/?" goto help
+
+if "%stream%"=="ver" goto version
 
 if "%stream%"=="vlc /?" goto helpVlc
 if "%stream%"=="vlc -h" goto helpVlc
@@ -387,17 +408,19 @@ if "%subPath%"=="no" goto importNoSub else (
     goto subFinder
 )
 
-:: check if subFinder give error in log --> S = success | F = failed
+:: check if subFinder give error in log --> S = Success | F = Failed
 :subFinder
 :: get last line log
 for /f "usebackq delims==" %%a in ("%Database%subFinder.log") do set "subFinderLog=%%a"
 :: get status of log
-set "sunFinderStatus=%subFinderLog:~20,1%"
-
+set "sunFinderStatus=%subFinderLog:~21,1%"
 if "%sunFinderStatus%"=="S" goto commands else (
+    echo \033[%fRed% failed to find subtitle^^! \033[0m | %style%
+    pause
     cls
     goto restart
 )
+
 
 ::skip import sub
 :importNoSub
@@ -459,9 +482,9 @@ echo:
 echo ^*This console will close automatically after the movie ends, but you can close me now.
 
 :: open VLC with paramters
-start /wait "" %Database%playlist.xspf
+start "" %Database%playlist.xspf
 
-goto quit
+goto exit
 
 :: reset current playlist by user
 :resetPlaylist
@@ -477,6 +500,24 @@ echo Y
 echo \033[%fYellow% --------------------- \033[0m | %style%
 
 break>%Database%playlist.xspf
+timeout 3 /nobreak >nul
+goto restart
+
+
+:: reset vlc location path
+:resetVlc
+cls
+echo \033[%fYellow% ------------------------- \033[0m | %style%
+echo |set /p="Reset VLC location path (Y/N)? "
+for /f delims^= %%g in ('choice /c YN /n /t 20 /d Y') do if /i "%%g"=="N" (
+    set "change=no"
+    goto restart
+)
+set "change=yes"
+echo Y
+echo \033[%fYellow% ------------------------- \033[0m | %style%
+
+break>%Database%vlcLocation.txt
 timeout 3 /nobreak >nul
 goto restart
 
@@ -526,10 +567,10 @@ if "%change%"=="commands.txt" (
        echo --sout-x264-bluray-compat
        echo --antiflicker-softening-size=31
        echo --src-converter-type=0
-       echo --network-caching=333
+       echo --network-caching=1000
        echo --mtu=1492
        echo --aout=directsound
-       echo --directx-volume=0.8
+       echo --directx-volume=1
        echo --qt-max-volume=200
        echo --no-audio-time-stretch
        echo --force-dolby-surround=1
@@ -567,17 +608,16 @@ if "%change%"=="Pcommands.txt" (
        echo ^<vlc:option^>sout-mp4-faststart^</vlc:option^>
        echo ^<vlc:option^>sout-deinterlace-phosphor-chroma=4^</vlc:option^>
        echo ^<vlc:option^>sout-x264-preset=ultrafast^</vlc:option^>
-       echo ^<vlc:option^>sout-x264-tune=filmv^</vlc:option^>
+       echo ^<vlc:option^>sout-x264-tune=film^</vlc:option^>
        echo ^<vlc:option^>sout-x264-level=51^</vlc:option^>
        echo ^<vlc:option^>sout-x264-profile=high444^</vlc:option^>
        echo ^<vlc:option^>sout-x264-bluray-compat^</vlc:option^>
        echo ^<vlc:option^>antiflicker-softening-size=31^</vlc:option^>
        echo ^<vlc:option^>src-converter-type=0^</vlc:option^>
-       echo ^<vlc:option^>network-caching=333^</vlc:option^>
+       echo ^<vlc:option^>network-caching=1000^</vlc:option^>
        echo ^<vlc:option^>mtu=1492^</vlc:option^>
        echo ^<vlc:option^>aout=directsound^</vlc:option^>
-       echo ^<vlc:option^>directx-volume=0.8^</vlc:option^>
-       echo ^<vlc:option^>qt-max-volume=200^</vlc:optionv^>
+       echo ^<vlc:option^>directx-volume=1^</vlc:option^>
        echo ^<vlc:option^>no-audio-time-stretch^</vlc:option^>
        echo ^<vlc:option^>force-dolby-surround=1^</vlc:option^>
        echo ^<vlc:option^>stereo-mode=5^</vlc:option^>
@@ -717,9 +757,11 @@ goto helpEnd
 :: current version
 :version
 cls
-echo amoAR VLC CLI - Stream HTTP source
-echo Version 1.0.0
-echo All rights reserved.
+echo amoAR VLC CLI - Stream HTTP URL sources in VLC
+echo:
+echo:
+echo Version 1.2.5
+echo (c) 2022 amoAR - All rights reserved.
 goto helpEnd
 
 
@@ -738,7 +780,7 @@ goto restart
 :resetAll
 cls
 echo \033[%fYellow% ----------------------------------------------- \033[0m | %style%
-echo | set /p="Reset app (Y/N)? This will delete all your data"
+echo | set /p="This will delete all your data. Reset app (Y/N)? "
 for /f delims^= %%g in ('choice /c YN /n') do if /i "%%g"=="N" (
     set "change=no"
     goto restart
