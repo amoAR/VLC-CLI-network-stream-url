@@ -26,10 +26,10 @@ namespace validateURL
         private static void Main(string[] args)
         {            
             // get args
-            string listPath = args[0]; // C:\Users\YourNmae\Desktop\playlist.txt
-            string playlistPath = args[1]; // C:\Users\YourNmae\Desktop\CLI\Database\playlist.xspf
-            string commandsPath = args[2]; // C:\Users\YourNmae\Desktop\CLI\Commands\commands.txt
-            string subPath = args[3]; // C:\Users\YourNmae\Desktop\mySubFolder
+            string listPath = args[0]; // C:\Users\YourName\Desktop\playlist.txt
+            string playlistPath = args[1]; // C:\Users\YourName\Desktop\CLI\Database\playlist.xspf
+            string commandsPath = args[2]; // C:\Users\YourName\Desktop\CLI\Commands\Pcommands.txt
+            string subPath = args[3]; // C:\Users\YourName\Desktop\Sub
 
             bool sub = true;
             if (string.IsNullOrWhiteSpace(subPath) || string.IsNullOrEmpty(subPath))
@@ -113,7 +113,8 @@ namespace validateURL
 
                     // sub option
                     string fileName = urls[i].Substring(urls[i].LastIndexOf('/') + 1);
-                    string movieName = fileName.Substring(0, fileName.Length - 4);                    
+                    string movieName = fileName.Substring(0, fileName.Length - 4);
+
                     streamWriter.WriteLine(space + getSub(movieName, subPath));
 
                     // footer main (track)
@@ -192,14 +193,15 @@ namespace validateURL
             string lastLog = File.ReadLines(logFilePath).Last();
 
             string commandsPath = Environment.CurrentDirectory + "\\Commands\\commands.txt";
-            
-            if (lastLog.Substring(20, 1) == "S")
+
+            string status = lastLog.Substring(21, 1);
+            if (status == "S")
             {
                 string[] lines = File.ReadAllLines(commandsPath);
                 File.WriteAllLines(commandsPath, lines.Take(lines.Length - 1));
-
-                return "<vlc:option>sub-file=" + lastLog.Substring(29) + "</vlc:option>";
+                return "<vlc:option>sub-file=" + lastLog.Substring(30) + "</vlc:option>";
             }
+
             // failed to find related subtitle --> bad URL or no subtitle to that name
             else
             {
