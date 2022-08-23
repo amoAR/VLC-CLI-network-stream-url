@@ -65,41 +65,13 @@ You don't need a lot!
 
 ### Installation
 
-This is just a script and does not need to be installed. Just note that you can create a shortcut for it and you don't want to get confused between the program files.
+This is just a script and does not need to be installed. Just note that you can create a shortcut for it if you don't want to get confused between the program files.
 
-<h4 align="left">How create shortcut?</h4>
+1- Download the latest version released ([CLI.zip](https://github.com/amoAR/VLC-CLI-network-stream-url/releases)).
 
-1. Move your extracted download folder to the location you want it to be. `(optional)`
+2- Unzip it.
 
-   - For example, you can move it from the `Downloads folder` (the default location for files downloaded by the browser) to the `Program Files folder` on the C drive or even on your `desktop`, it doesn't matter. <br /><br /> In this tutorial we put it in C drive :<br /><br />
-
-   ```
-   C:\Program Files\CLI
-   ```
-
-   - You can also change the name of the folder from CLI to anything else.
-     <br />
-
-2. Enter the folder and look for the VLC file with the extension .bat
-
-   ```
-   C:\Program Files\CLI\VLC.bat
-   ```
-
-   <br />
-
-3. Right-click the `VLC.bat`, and then click `Send To > Desktop (Create shortcut)`. A shortcut for the program appears on your desktop
-   <br />
-
-   > If your can't find `Send To` option, select the `Create Shortcut` option on Right-click menu, then manually move the shortcut file to your desktop.
-
-   - If it does not appear, refresh your desktop once.
-     <br />
-
-4. Now you can make any changes on this shortcut, such as icon, name, console settings, etc
-<br />
-
-5. Click on the shortcut to open it. Installation is complete!
+3- Run VLC.bat
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <br />
